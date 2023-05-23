@@ -1,5 +1,5 @@
 # Voting Dapp
-![alt text](app/minter.png)
+![alt text](app/app.png)
 ### Mint Request
 ![alt text](images/minter.png)
 ![alt text](images/minting.png)
