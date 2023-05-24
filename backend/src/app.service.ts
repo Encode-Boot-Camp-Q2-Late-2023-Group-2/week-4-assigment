@@ -11,7 +11,6 @@ export class AppService {
   provider: ethers.providers.Provider;
   contract: ethers.Contract;
   ballotContract: ethers.Contract;
-  voter;
   deployer;
   constructor(private configService: ConfigService) {
     this.provider = ethers.getDefaultProvider('sepolia', {
@@ -21,8 +20,6 @@ export class AppService {
     });
     this.contract = new ethers.Contract(this.configService.get<string>("TOKEN_ADDRESS"), tokenJson.abi, this.provider);
     this.ballotContract = new ethers.Contract(this.configService.get<string>("BALLOT_ADDRESS"), ballotJson.abi, this.provider)
-    const voterWallet = new ethers.Wallet(this.configService.get<string>('VOTER_PRIVATE_KEY') ?? "")
-    this.voter = voterWallet.connect(this.provider)
     const wallet = new ethers.Wallet(this.configService.get<string>('PRIVATE_KEY') ?? "")
     this.deployer = wallet.connect(this.provider)
   }
